@@ -41,7 +41,7 @@ def main():
     ap = ArgumentParser(usage=usage, description=description)
     ap.add_argument('--domain', help=helpers['domain'], type=str)
     ap.add_argument('--conf-file', help=helpers['conf-file'], type=str)
-    ap.add_argument('--placeholder', help=helpers['placeholder'], type=str)
+    ap.add_argument('--placeholder', help=helpers['placeholder'], type=str, default="@DOMAIN_NAME")
     args = vars(ap.parse_args())
 
     replace_domain(**args)
