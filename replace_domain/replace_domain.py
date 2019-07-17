@@ -31,11 +31,17 @@ def main():
     # Declare argparse argument descriptions
     usage = 'Nginx config string replacement utility.'
     description = 'Replace $DOMAIN_NAME place holder with real domain name value.'
+    helpers = {
+        'domain': 'Domain name to replace the placeholder',
+        'conf-file': 'Path to your .conf template file.',
+        'placeholder': 'String to replace to replace with domain value.'
+    }
 
     # construct the argument parse and parse the arguments
     ap = ArgumentParser(usage=usage, description=description)
-    ap.add_argument('--domain', help='Domain name.', type=str)
-    ap.add_argument('--conf-file', help='Path to config file', type=str)
+    ap.add_argument('--domain', help=helpers['domain'], type=str)
+    ap.add_argument('--conf-file', help=helpers['conf-file'], type=str)
+    ap.add_argument('--placeholder', help=helpers['placeholder'], type=str)
     args = vars(ap.parse_args())
 
     replace_domain(args['domain'], args['conf_file'])
