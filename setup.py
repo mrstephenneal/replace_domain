@@ -32,6 +32,7 @@ setup(
     entry_points={
         'console_scripts': [
             'replace_domain = replace_domain.replace_domain:main',
+            'replace-domain = replace_domain.replace_domain:main',
         ]
     },
     license='',

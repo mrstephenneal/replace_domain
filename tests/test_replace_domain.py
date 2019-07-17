@@ -8,7 +8,7 @@ from replace_domain import replace_domain
 DOMAIN = 'validation.example.com'
 CONF_FILE = os.path.join(os.path.dirname(__file__), 'data', 'default.conf')
 CONF_FILE_REPLACED = os.path.join(os.path.dirname(__file__), 'data', 'default_replaced.conf')
-PLACEHOLDER = '$VALIDATION_DOMAIN'
+PLACEHOLDER = '@VALIDATION_DOMAIN'
 
 
 def tests_cleaner():

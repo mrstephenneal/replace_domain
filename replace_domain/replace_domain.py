@@ -4,7 +4,7 @@ import os
 
 
 @Timer.decorator
-def replace_domain(domain, conf_file, placeholder="$DOMAIN_NAME"):
+def replace_domain(domain, conf_file, placeholder="@DOMAIN_NAME"):
     """
     Parse a nginx.conf template that contains $DOMAIN_NAME placeholders.
 
@@ -44,7 +44,7 @@ def main():
     ap.add_argument('--placeholder', help=helpers['placeholder'], type=str)
     args = vars(ap.parse_args())
 
-    replace_domain(args['domain'], args['conf_file'])
+    replace_domain(**args)
 
 
 if __name__ == '__main__':
