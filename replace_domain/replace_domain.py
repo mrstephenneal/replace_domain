@@ -3,7 +3,6 @@ from argparse import ArgumentParser
 import os
 
 
-@Timer.decorator
 def replace_domain(domain, conf_file, placeholder="@DOMAIN_NAME"):
     """
     Parse a nginx.conf template that contains $DOMAIN_NAME placeholders.
@@ -15,16 +14,17 @@ def replace_domain(domain, conf_file, placeholder="@DOMAIN_NAME"):
     :param placeholder: String to replace within the config file
     :return:
     """
-    # Read in the file
-    with open(os.path.abspath(conf_file), 'r') as cf:
-        data = cf.read()
+    with Timer('replace_domain: {2} ---> `{0}` => `{1}'.format(placeholder, domain, conf_file)):
+        # Read in the file
+        with open(os.path.abspath(conf_file), 'r') as cf:
+            data = cf.read()
 
-    # Replace the target string
-    new_data = data.replace(placeholder, domain)
+        # Replace the target string
+        new_data = data.replace(placeholder, domain)
 
-    # Write the file out again
-    with open(conf_file, 'w') as cf:
-        cf.write(new_data)
+        # Write the file out again
+        with open(conf_file, 'w') as cf:
+            cf.write(new_data)
 
 
 def main():
